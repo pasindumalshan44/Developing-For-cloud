@@ -64,13 +64,19 @@
     <main class="container" x-data="home">
       <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-secondary">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-          <h1 class="display-4 fw-normal">Welcome to Cars and Coffee
+          <h1 class="display-4 fw-bold text-light">Welcome to Cars and Coffee
             <template x-if="user">
               <span x-html="user.name"></span>
             </template>
           </h1>
-          <p class="lead fw-normal">Palms Beach</p>
-          <a class="btn btn-outline-secondary" href="shop.html">View Our Products</a>
+          <p class="lead fw-normal text-warning">Palms Beach</p>
+          <p class="display-3 fw normal text-warning">So who are we?</p>
+            <p class="text-light w-100">To start with, we are passionate about cars (and bikes) and have been for the majority of our lives. Two of the people on this list were actually destined to be in the hobby from the day they were born. 
+            
+            We are, with one exception (feel free to guess who) car guys and gals. We love the artistry of automobile design, the craftsmanship that goes into every vehicle, the people, the sport, and the smell of gasoline and burning rubber. Some of us are collectors, judges, track addicts. Some of us are all three. 
+            
+            When you think about it, we're a lot like you.</p>
+          <a class="btn btn-outline-light text-white" href="shop.html">View Our Products</a>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
