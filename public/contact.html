@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to carsandcoffeepb </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.9.4/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.9.4/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.9.4/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">    
+      <div class="container">
+        <a class="navbar-brand" href="/">Cars & Coffee</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="event.html">Event</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <main class="container" x-data="contactModule">
+      <h1 class="my-4">Contact Sale X</h1>
+  
+  
+      <div class="row mt-5">
+        <div class="col-8">
+          <div class="alert alert-success" x-show="success">
+            <strong>Success!</strong> Your message has been sent.
+          </div>
+          <div class="alert alert-danger" x-show="error">
+            <strong>Error!</strong> Your message has not been sent.
+          </div>
+          <form x-on:submit.prevent="saveContactForm">
+  
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" x-model="name" class="form-control" name="name" id="name" aria-describedby="nameHelp"
+                required />
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" x-model="email" class="form-control" name="email" id="email"
+                aria-describedby="emailHelp" required />
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea name="message" x-model="message" class="form-control" id="message" required></textarea>
+            </div>
+  
+            <button type="submit" class="btn btn-primary">Send</button>
+  
+          </form>
+        </div>
+      </div>
+  
+      <div class="row mt-5">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>              
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="contact in contacts">
+                <tr>
+                  <td x-html="contact.name"></td>
+                  <td x-html="contact.email"></td>
+                  <td x-html="contact.message"></td>         
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+  
+  
+    </main>
+  
+    <div class="b-example-divider"></div>
+
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="event.html" class="nav-link px-2 text-muted">Event</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link px-2 text-muted">Gallery</a></li>
+          <li class="nav-item"><a href="shop.html" class="nav-link px-2 text-muted">Shop</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link px-2 text-muted">Contact</a></li>
+        </ul>
+        <p class="text-center text-muted">EVENT ADDRESS:
+
+          Palm Beach Outlets
+          
+          1751 Palm Beach Lakes Blvd.
+          
+          West Palm Beach, FL 33401
+        </p>
+
+        
+        <p class="text-center text-muted">MAILING ADDRESS:
+
+          10798 Madison Drive,
+          
+          Boynton Beach, FL 33437
+          
+          PHONE: 561-756-3063
+          
+          EMAIL: Support@carsandcoffeepb.com</p>
+
+        <p class="text-center text-muted">&copy; 
+          Cars & Coffee Palm Beach
+          by ZeilCorp, LLC</p>
+      </footer>
+    </div>
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"></script>
+  
+    <script type="text/javascript">
+      document.addEventListener('alpine:init', () => {
+  
+        const firestore = firebase.firestore().collection('contactRequests');
+  
+        Alpine.data('contactModule', () => ({
+          contacts: [],
+          success: false,
+          error: false,
+          name: '',
+          email: '',
+          message: '',
+          init() {
+  
+        
+            // get all contacts from firestore
+            // firestore.get().then(querySnapshot => {
+            //   querySnapshot.forEach(doc => {
+            //     this.contacts.push(doc.data());
+            //   });
+            // });
+  
+            // get all contacts from firestore sorted according to the timestamp
+            firestore
+              .orderBy('timestamp', 'desc')
+              .get()
+              .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                  this.contacts.push(doc.data());
+                });
+              });
+  
+            // get contact form data from firebase realtime database on update
+            firestore
+              .onSnapshot(querySnapshot => {
+                this.contacts = [];
+                querySnapshot.forEach(doc => {
+                  this.contacts.push(doc.data());
+                });
+              });
+  
+          },
+          saveContactForm() {
+            firestore
+              .add({
+                name: this.name,
+                email: this.email,
+                message: this.message,
+                // add current timestamp to record
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+              })
+              .then(() => {
+              
+                // send email to admin using firebase function sendContactEmail
+                firebase.functions().httpsCallable('sendContactMailTrap')({
+                  name: this.name,
+                  email: this.email,
+                  message: this.message
+                });
+  
+              
+                this.success = true;
+                this.name = '';
+                this.email = '';
+                this.message = '';
+  
+              })
+              .catch((error) => {
+                console.log(error);
+                this.error = true;
+              });
+          }
+        }))
+      })
+    </script>
+  </body>
+</html>
